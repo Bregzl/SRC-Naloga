@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Search from "./components/Search";
+import Search from "./Search";
 import axios from "axios";
-import SeznamZaposlenih from "./components/SeznamZaposlenih";
-import DodajZaposlenega from "./components/DodajZaposlenega";
+import SeznamZaposlenih from "./SeznamZaposlenih";
 
-function App() {
+function UrejevalnikZaposlenih() {
   const [search, setSearch] = useState("");
   const [zaposleni, setZaposleni] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -24,10 +23,13 @@ function App() {
     };
 
     fetchData();
+    //console.log(zaposleni);
   }, []);
 
   const searchHandler = (e) => {
     const searchInput = e.target.value;
+    console.log(searchInput);
+    //console.log(zaposleni);
     setSearch(searchInput);
   };
 
@@ -38,7 +40,6 @@ function App() {
       </header>
 
       <main>
-        <DodajZaposlenega zaposleni={zaposleni} setZaposleni={setZaposleni} />
         <Search searchHandler={searchHandler} />
         <SeznamZaposlenih
           zaposleni={zaposleni}
@@ -51,4 +52,4 @@ function App() {
   );
 }
 
-export default App;
+export default UrejevalnikZaposlenih;
